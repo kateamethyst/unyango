@@ -1,7 +1,9 @@
-import { store } from '../controllers/user.controller';
+import express from 'express';
+import  {register, getAuthenticated} from '../app/controllers/user.controller';
+const router = express.Router();
 
-const routes = (app) => {
-  app.route('/register')
-    .post(store)
-}
-export default routes;
+router.post('/', register);
+
+router.post('/authenticate', getAuthenticated);
+
+module.exports = router;
